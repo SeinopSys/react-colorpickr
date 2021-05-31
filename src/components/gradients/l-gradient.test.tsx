@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { LGradient } from './l-gradient';
+import { LGradient } from './l-gradient.js';
 
 describe('LGradient', () => {
   test('renders inactive', () => {

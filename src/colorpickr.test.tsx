@@ -1,12 +1,12 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import ColorPickr from './colorpickr';
 import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, render, RenderResult } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React, { createRef, MutableRefObject } from 'react';
+import { ColorPickr, ColorPickrAPI, ColorPickrProps } from './colorpickr.js';
 
 describe('Colorpickr', () => {
   describe('renders', () => {
-    let wrapper;
+    let wrapper: RenderResult;
     const props = {
       onChange: jest.fn()
     };
@@ -107,7 +107,7 @@ describe('Colorpickr', () => {
     });
 
     test('default mode is active', () => {
-      const element = wrapper.getByTestId('mode-hsl');
+      const element = wrapper.getByTestId('mode-hsl') as HTMLInputElement;
       expect(element.checked).toEqual(true);
     });
 
@@ -122,12 +122,12 @@ describe('Colorpickr', () => {
   });
 
   describe('overrides', () => {
-    let wrapper;
-    let mockedInstance;
+    let wrapper: RenderResult;
+    const mockedInstance = createRef() as MutableRefObject<ColorPickrAPI>;
 
-    const props = {
+    const props: ColorPickrProps = {
       onChange: jest.fn(),
-      mounted: (instance) => (mockedInstance = instance)
+      apiRef: mockedInstance
     };
 
     beforeEach(() => {
@@ -135,7 +135,8 @@ describe('Colorpickr', () => {
     });
 
     test('mocked instance is called', () => {
-      mockedInstance.overrideValue('red');
+      expect(mockedInstance.current).not.toBe(null);
+      mockedInstance.current?.overrideValue('red');
       expect(props.onChange).toHaveBeenCalledWith({
         h: 0,
         s: 100,
@@ -155,7 +156,7 @@ describe('Colorpickr', () => {
     });
 
     test('overrideValue with true as second argument sets overrides initialValue', () => {
-      mockedInstance.overrideValue('red', true);
+      mockedInstance.current?.overrideValue('red', true);
       expect(props.onChange).toHaveBeenCalledWith({
         h: 0,
         s: 100,
@@ -231,12 +232,12 @@ describe('Colorpickr', () => {
   describe('hex value', () => {
     test('hex value remains long', () => {
       const props = {
-        initialValue: '#33ffee',
+        initialValue: '#3fe',
         onChange: jest.fn()
       };
 
       const { getByTestId } = render(<ColorPickr {...props} />);
-      const element = getByTestId('hex-input');
+      const element = getByTestId('hex-input') as HTMLInputElement;
       expect(element.value).toEqual('33ffee');
     });
 
@@ -247,7 +248,7 @@ describe('Colorpickr', () => {
       };
 
       const { getByTestId } = render(<ColorPickr {...props} />);
-      const element = getByTestId('hex-input');
+      const element = getByTestId('hex-input') as HTMLInputElement;
       expect(element.value).toEqual('3fe');
     });
   });

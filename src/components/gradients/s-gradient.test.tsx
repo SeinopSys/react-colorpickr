@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { SGradient } from './s-gradient';
+import { SGradient } from './s-gradient.js';
 
 describe('SGradient', () => {
   test('renders', () => {

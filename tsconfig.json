@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "lib": ["DOM", "ES6"],
+    "sourceMap": true,
+    "strict": true,
+    "stripInternal": true
+  }
+}

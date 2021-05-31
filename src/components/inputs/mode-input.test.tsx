@@ -1,12 +1,11 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ModeInput } from './mode-input';
+import { render, RenderResult, screen } from '@testing-library/react';
+import { ModeInput, ModeInputProps, ModeInputTheme } from './mode-input';
 import userEvent from '@testing-library/user-event';
 
 describe('ModeInput', () => {
-  let wrapper;
-  const props = {
-    id: 'mode',
+  let wrapper: RenderResult;
+  const props: ModeInputProps = {
     checked: false,
     theme: {},
     name: 'mode',

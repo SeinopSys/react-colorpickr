@@ -1,3 +1,6 @@
+import { Themeable } from '@seinopsys-forks/react-themeable';
+import { AutoKey, AutoKeyedThemer } from './autokey';
+
 export const defaultTheme = {
   container:
     'colorpickr round inline-block bg-gray-faint w240 round px12 py12 txt-xs',
@@ -46,3 +49,6 @@ export const defaultTheme = {
   newSwatchContainer: 'col col--auto h24',
   hexContainer: 'flex-child-grow ml12 relative'
 };
+
+export type Theme = typeof defaultTheme;
+export type PackageAutoKeyedThemer = AutoKeyedThemer<keyof Theme>;

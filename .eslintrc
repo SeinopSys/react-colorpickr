@@ -1,7 +1,10 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "env": {
     "es6": true,
@@ -14,7 +17,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "@typescript-eslint"
   ],
   "rules": {
     "react/jsx-uses-vars": ["error"],
@@ -27,14 +31,24 @@
     "react/no-direct-mutation-state": ["error"],
     "react/no-unknown-property": ["error"],
     "react/prefer-es6-class": ["error", "always"],
-    "react/prop-types": ["error"],
+    "react/prop-types": ["off"],
     "react/react-in-jsx-scope": ["error"],
     "react/require-render-return": ["error"],
     "react/style-prop-object": ["error"],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "semi",
+        "requireLast": true
+      },
+      "singleline": {
+        "delimiter": "semi",
+        "requireLast": false
+      }
+    }]
   },
   "overrides": [
     {
-      "files": ["*.test.js"],
+      "files": ["*.test.ts", "*.test.tsx"],
       "env": {
         "jest": true
       }

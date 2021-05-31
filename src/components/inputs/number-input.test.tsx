@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { NumberInput } from './number-input';
+import { render, screen, fireEvent, RenderResult } from '@testing-library/react';
+import { NumberInput, NumberInputProps } from './number-input';
 import userEvent from '@testing-library/user-event';
 
 describe('NumberInput', () => {
-  let wrapper;
-  const props = {
-    id: 'label',
+  let wrapper: RenderResult;
+  const props: NumberInputProps = {
+    id: 'l',
     theme: {},
     onChange: jest.fn(),
     min: 1,

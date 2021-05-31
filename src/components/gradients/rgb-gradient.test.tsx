@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { RGBGradient } from './rgb-gradient';
+import { RGBGradient, RGBGradientProps } from './rgb-gradient.js';
 
 describe('RGBGradient', () => {
   test('renders', () => {
-    const props = {
+    const props: RGBGradientProps = {
       active: true,
       color: 'r',
       theme: {},
@@ -17,7 +17,7 @@ describe('RGBGradient', () => {
   });
 
   test('renders with opacity', () => {
-    const props = {
+    const props: RGBGradientProps = {
       active: false,
       color: 'r',
       theme: {},

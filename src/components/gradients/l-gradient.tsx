@@ -1,10 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import themeable from 'react-themeable';
-import { autokey } from '../../autokey';
+import { themeable } from '@seinopsys-forks/react-themeable';
+import React, { VoidFunctionComponent } from 'react';
+import { autoKey } from '../../autokey';
+import { Theme } from '../../theme';
 
-function LGradient({ theme, active, opacityLow, opacityHigh }) {
-  const themer = autokey(themeable(theme));
+/**
+ * @internal
+ */
+export type LGradientTheme = Pick<Theme, 'gradient' | 'gradientLight'>;
+
+/**
+ * @internal
+ */
+export interface LGradientProps {
+  theme: Partial<LGradientTheme>;
+  active: boolean;
+  opacityLow: number;
+  opacityHigh: number;
+}
+
+/**
+ * @internal
+ */
+export const LGradient: VoidFunctionComponent<LGradientProps> = ({ theme, active, opacityLow, opacityHigh }) => {
+  const themer = autoKey(themeable(theme));
   if (!active) return <noscript />;
 
   // Opacity should be 0 when range value is at 0.5
@@ -37,13 +55,4 @@ function LGradient({ theme, active, opacityLow, opacityHigh }) {
       />
     </>
   );
-}
-
-LGradient.propTypes = {
-  theme: PropTypes.object.isRequired,
-  active: PropTypes.bool.isRequired,
-  opacityLow: PropTypes.number.isRequired,
-  opacityHigh: PropTypes.number.isRequired
 };
-
-export { LGradient };

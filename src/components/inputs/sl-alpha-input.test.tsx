@@ -1,10 +1,10 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import { SLAlphaInput } from './sl-alpha-input';
+import React from 'react';
+import { SLAlphaInput, SLAlphaInputProps } from './sl-alpha-input.js';
 
 describe('SLAlphaInput', () => {
   test('renders', () => {
-    const props = {
+    const props: SLAlphaInputProps = {
       id: 's',
       value: 92,
       theme: {},

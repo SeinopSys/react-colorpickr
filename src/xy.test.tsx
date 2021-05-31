@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { XYControl } from './xy';
+import { XYControl, XYControlProps } from './xy';
 
 describe('XYControl', () => {
   test('renders', () => {
-    const props = {
+    const props: XYControlProps = {
       theme: {},
       x: 0,
       y: 10,
@@ -23,7 +23,7 @@ describe('XYControl', () => {
   });
 
   test('renders isDark', () => {
-    const props = {
+    const props: XYControlProps = {
       theme: {},
       x: 0,
       y: 10,

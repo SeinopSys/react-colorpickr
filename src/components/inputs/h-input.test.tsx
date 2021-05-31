@@ -1,10 +1,10 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import { HInput } from './h-input';
+import React from 'react';
+import { HInput, HInputProps } from './h-input';
 
 describe('HInput', () => {
   test('renders', () => {
-    const props = {
+    const props: HInputProps = {
       id: 'h',
       value: 200,
       theme: {},

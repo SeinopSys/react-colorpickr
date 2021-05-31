@@ -1,10 +1,10 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import { RGBInput } from './rgb-input';
+import React from 'react';
+import { RGBInput, RGBInputProps } from './rgb-input';
 
-describe('RGBInput', () => {
+describe('RgbInput', () => {
   test('renders', () => {
-    const props = {
+    const props: RGBInputProps = {
       id: 'r',
       value: 200,
       theme: {},

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { HGradient } from './h-gradient';
+import { HGradient } from './h-gradient.js';
 
 describe('HGradient', () => {
   test('renders inactive', () => {
